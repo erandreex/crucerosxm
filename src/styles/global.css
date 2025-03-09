@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+	--color-primary: #223766;
+	--color-secondary: #254897;
+	--color-neutro: #f0f2f3;
+	--color-letras: #323232;
+	--color-gold: #b8a88a;
+}
+
+body {
+	font-family: "Barlow Condensed", sans-serif;
+	font-weight: 500;
+	font-style: normal;
+	color: #223766;
+}
+
+h1,
+h2,
+h3 {
+	font-family: "Playfair Display", serif;
+	font-optical-sizing: auto;
+	font-weight: 700;
+	font-style: normal;
+}
+
+.barlow-condensed-regular-italic {
+	font-family: "Barlow Condensed", sans-serif;
+	font-weight: 400;
+	font-style: italic;
+}
+
+.section-title {
+	font-family: "Playfair Display", serif;
+	color: #333;
+	position: relative;
+	display: inline-block;
+}
+
+.section-title:after {
+	content: "";
+	position: absolute;
+	bottom: -10px;
+	left: 0;
+	width: 60px;
+	height: 3px;
+	background-color: #b8a88a;
+}
+
+/* carrusel */
+
+.carousel-slide {
+	min-width: 90%;
+	position: relative;
+	margin-right: 15px;
+	border-radius: 6px;
+	overflow: hidden;
+}
+.slide-image {
+	height: 500px;
+	width: 100%;
+	object-fit: cover;
+}
+.slide-overlay {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 70%;
+	background: linear-gradient(
+		to top,
+		rgba(0, 0, 0, 0.85) 0%,
+		rgba(0, 0, 0, 0.7) 70%,
+		rgba(0, 0, 0, 0.5) 80%,
+		rgba(0, 0, 0, 0.3) 90%,
+		rgba(0, 0, 0, 0) 100%
+	);
+	pointer-events: none;
+}
+
+/* carrusel */
+
+/* carrusel mediun */
+
+.carousel-slide-medium {
+	min-width: 90%;
+	position: relative;
+	margin-right: 5px;
+	margin-left: 5px;
+	border-radius: 6px;
+	overflow: hidden;
+}
+.slide-image-medium {
+	height: 500px;
+	width: 100%;
+	object-fit: cover;
+}
+.slide-overlay-medium {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 70%;
+	background: linear-gradient(
+		to top,
+		rgba(0, 0, 0, 0.85) 0%,
+		rgba(0, 0, 0, 0.7) 70%,
+		rgba(0, 0, 0, 0.5) 80%,
+		rgba(0, 0, 0, 0.3) 90%,
+		rgba(0, 0, 0, 0) 100%
+	);
+	pointer-events: none;
+}
+/* carrusel */
+
+/* brands */
+
+.brands-logo {
+	animation: slidee 25s linear infinite;
+}
+
+@keyframes slidee {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-100%);
+	}
+}
+/* brands */
