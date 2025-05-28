@@ -1,7 +1,6 @@
 import Splide from "@splidejs/splide";
 
 function loadSlide() {
-	// Verificar si el elemento con la clase ".splide" existe en el DOM
 	const splideElement = document.querySelector(".splide");
 	if (splideElement) {
 		new Splide(".splide", {
@@ -10,14 +9,22 @@ function loadSlide() {
 		}).mount();
 	}
 
-	// Verificar si el elemento con el id "#slider2" existe en el DOM
 	const slider2Element = document.querySelector("#slider2");
 	if (slider2Element) {
 		new Splide("#slider2", {
 			type: "loop",
 			perPage: 2,
 			autoplay: true,
-			interval: 3000, // 3 segundos por slide
+			interval: 3000,
+		}).mount();
+	}
+
+	const slider3Element = document.querySelector("#slider3");
+	if (slider3Element) {
+		new Splide("#slider3", {
+			type: "loop",
+			autoplay: true,
+			interval: 5000,
 		}).mount();
 	}
 }

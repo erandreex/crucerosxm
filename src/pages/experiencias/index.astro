@@ -2,11 +2,24 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
-
 import "../../styles/global.css";
-import Footer from "../../components/Footer.astro";
 
-const experiencias = await getCollection("experiencias");
+import Footer from "../../components/Footer.astro";
+import { getImage } from "astro:assets";
+
+const experienciasBase = await getCollection("experiencias");
+
+const experiencias = await Promise.all(
+	experienciasBase.map(async (entrada) => ({
+		...entrada,
+		optimizedImg: await getImage({
+			src: `/${entrada.data.img}`,
+			width: 800,
+			height: 800,
+			format: "webp",
+		}),
+	}))
+);
 ---
 
 <Layout title="Experiencias" description="Aqui se comparten las experiencias de vida de Ernesto Solís.">
@@ -19,7 +32,7 @@ const experiencias = await getCollection("experiencias");
 			<a href="/experiencias" class="hover-text-primary">Experiencias</a>
 		</div>
 
-		<h2 class="text-4xl font-bold text-white">Mis experiencias</h2>
+		<h2 class="text-4xl font-bold text-primary">Mis experiencias</h2>
 		<p class="text-gray-400 py-4 mb-4">
 			Experiencias de vida que quiero compartir con todos, una mezcla de innovación, alegrías, desarrollo y más.
 		</p>
@@ -28,19 +41,19 @@ const experiencias = await getCollection("experiencias");
 			{
 				experiencias.map((experiencia: any) => (
 					<a href={`/experiencias/${experiencia.slug}`} class="block">
-						<div class="bg-gray-800 rounded-lg p-3 image-wrapper relative overflow-hidden">
+						<div class="bg-white rounded-lg p-3 image-wrapper relative overflow-hidden">
 							<div class=" relative">
 								<img
-									src={`${experiencia.data.img}`}
-									alt={`${experiencia.data.ttitle}`}
+									src={`${experiencia.optimizedImg.src}`}
+									alt={`${experiencia.data.title}`}
 									transition:name={`${experiencia.data.title}-image`}
 									class="w-full h-60 object-cover"
 								/>
 							</div>
 							<div class="py-6 ">
-								<h2 class="text-white text-xl font-bold mb-2 ">{experiencia.data.title}</h2>
-								<p class="text-gray-400 line-clamp-2">{experiencia.data.description}</p>
-								<p class="text-gray-200 mt-1">
+								<h2 class="text-primary text-xl font-bold mb-2 ">{experiencia.data.title}</h2>
+								<p class="text-primary line-clamp-2">{experiencia.data.description}</p>
+								<p class="text-primary mt-1">
 									{new Date(experiencia.data.date).toLocaleDateString("es-ES", {
 										weekday: "long",
 										year: "numeric",

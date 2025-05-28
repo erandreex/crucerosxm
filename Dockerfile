@@ -27,8 +27,13 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 # Copia tu archivo nginx.conf personalizado a la ubicación predeterminada de Nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Exponer el puerto
-EXPOSE 3000
+# Copia los certificados SSL
+COPY certificate.crt /etc/nginx/certs/certificate.crt
+COPY private.key /etc/nginx/certs/private.key
+
+# Exponer los puertos HTTP y HTTPS
+EXPOSE 80
+EXPOSE 443
 
 # Comando de inicio
 CMD ["nginx", "-g", "daemon off;"]

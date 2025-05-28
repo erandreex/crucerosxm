@@ -1,6 +1,4 @@
 function setupMenu() {
-	console.log("Menu iniciado");
-
 	// Mobile menu toggle
 	const menuToggle = document.getElementById("menu-toggle");
 
@@ -34,7 +32,7 @@ function setupMenu() {
 	mobileDropdownToggles.forEach((toggle) => {
 		toggle.addEventListener("click", function () {
 			const submenu = this.nextElementSibling;
-			const arrow = this.querySelector("svg");
+			const arrow = this.querySelector(".flechaa");
 
 			submenu.classList.toggle("open");
 

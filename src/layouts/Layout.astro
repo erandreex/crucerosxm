@@ -10,14 +10,17 @@ const { title, description } = Astro.props;
 
 import "@splidejs/splide/css";
 import "../styles/menu.css";
+import "../styles/global.css";
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<!-- <meta name="viewport" content="width=device-width" /> -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<link rel="icon" type="image/svg+xml" href="/favicon-crucerosxm.jpg" />
+
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		<ClientRouter />
@@ -33,5 +36,8 @@ import "../styles/menu.css";
 		<slot />
 		<script src="/src/scripts/menu.js"></script>
 		<script src="/src/scripts/splide-init.js"></script>
+		<script src="/src/scripts/contactform.js"></script>
+		<script src="/src/scripts/subscribeform.js"></script>
+		<script src="/src/scripts/banneraction.js"></script>
 	</body>
 </html>
