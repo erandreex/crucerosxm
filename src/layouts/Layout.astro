@@ -1,6 +1,4 @@
 ---
-import { ClientRouter } from "astro:transitions";
-
 export interface Props {
 	title: string;
 	description: string;
@@ -23,7 +21,6 @@ import "../styles/global.css";
 
 		<title>{title}</title>
 		<meta name="description" content={description} />
-		<ClientRouter />
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -37,7 +34,7 @@ import "../styles/global.css";
 		<script src="/src/scripts/menu.js"></script>
 		<script src="/src/scripts/splide-init.js"></script>
 		<script src="/src/scripts/contactform.js"></script>
-		<script src="/src/scripts/subscribeform.js"></script>
 		<script src="/src/scripts/banneraction.js"></script>
+		<script src="/src/scripts/subscribeform.js"></script>
 	</body>
 </html>

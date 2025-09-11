@@ -16,7 +16,7 @@ function setupSubscribeForm() {
 			}
 
 			try {
-				const response = await fetch("https://dev.erandreex.com:3001/subscribe", {
+				const response = await fetch("https://crucerosxm-server.fly.dev/subscribe", {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify({ correo: email }),

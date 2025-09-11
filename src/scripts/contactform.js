@@ -18,17 +18,18 @@ function setupContactForm() {
 			event.preventDefault(); // Evita el envío predeterminado del formulario
 
 			const formData = new FormData(form);
+
 			const data = {
-				nombre: formData.get("nombre"),
-				telefono: formData.get("telefono"),
-				correo: formData.get("correo"),
-				fechasalida: formData.get("fechasalida"),
-				cantpersonas: parseInt(formData.get("cantpersonas"), 10) || 0,
-				motivoviaje: formData.get("motivoviaje"),
+				nombre: formData.get("name"),
+				telefono: formData.get("phone"),
+				correo: formData.get("email"),
+				fechasalida: formData.get("date"),
+				cantpersonas: parseInt(formData.get("passengers"), 10) || 0,
+				motivoviaje: formData.get("reason"),
 			};
 
 			try {
-				const response = await fetch("https://dev.erandreex.com:3001/register", {
+				const response = await fetch("https://crucerosxm-server.fly.dev/form", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
@@ -44,7 +45,7 @@ function setupContactForm() {
 				}
 			} catch (error) {
 				console.error("Error:", error);
-				messageContainer.textContent = "Hubo un problema al enviar la reserva ❌";
+				messageContainer.textContent = "Hubo un problema al enviar ";
 				messageContainer.classList.add("text-red-600");
 			}
 
