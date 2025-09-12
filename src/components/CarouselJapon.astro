@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+---
+
+<div class="splide" id="carousel-japon">
+	<div class="splide__track">
+		<ul class="splide__list">
+			<li class="splide__slide">
+				<img src="/images/viajes/japon-tokio.jpg" alt="Tokio" class="w-full h-64 object-cover rounded-lg" />
+				<h3 class="text-center mt-2 font-semibold">Tokio - La capital futurista</h3>
+			</li>
+			<li class="splide__slide">
+				<img src="/images/viajes/japon-kioto.jpg" alt="Kioto" class="w-full h-64 object-cover rounded-lg" />
+				<h3 class="text-center mt-2 font-semibold">Kioto - Tradición milenaria</h3>
+			</li>
+			<li class="splide__slide">
+				<img src="/images/viajes/japon-monte-fuji.jpg" alt="Monte Fuji" class="w-full h-64 object-cover rounded-lg" />
+				<h3 class="text-center mt-2 font-semibold">Monte Fuji - Majestuosidad natural</h3>
+			</li>
+			<li class="splide__slide">
+				<img src="/images/viajes/japon-diamond-princess.jpg" alt="Diamond Princess" class="w-full h-64 object-cover rounded-lg" />
+				<h3 class="text-center mt-2 font-semibold">Diamond Princess - Crucero de lujo</h3>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<script>
+	import Splide from "@splidejs/splide";
+
+	// Inicializar carrusel específico para Japón
+	document.addEventListener("DOMContentLoaded", function () {
+		const japanCarousel = document.querySelector("#carousel-japon");
+		if (japanCarousel) {
+			new Splide("#carousel-japon", {
+				type: "loop",
+				autoplay: true,
+				interval: 4000,
+				pauseOnHover: true,
+				arrows: true,
+				pagination: true,
+				perPage: 1,
+				gap: "1rem",
+				breakpoints: {
+					768: {
+						perPage: 1,
+					},
+				},
+			}).mount();
+		}
+	});
+</script>

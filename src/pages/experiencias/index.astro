@@ -9,8 +9,11 @@ import { getImage } from "astro:assets";
 
 const experienciasBase = await getCollection("experiencias");
 
+// Ordenar por fecha (más reciente primero)
+const experienciasOrdenadas = experienciasBase.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
 const experiencias = await Promise.all(
-	experienciasBase.map(async (entrada) => ({
+	experienciasOrdenadas.map(async (entrada) => ({
 		...entrada,
 		optimizedImg: await getImage({
 			src: `/${entrada.data.img}`,
@@ -40,27 +43,19 @@ const experiencias = await Promise.all(
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-4">
 			{
 				experiencias.map((experiencia: any) => (
-					<a href={`/experiencias/${experiencia.slug}`} class="block">
-						<div class="bg-white rounded-lg p-3 image-wrapper relative overflow-hidden">
-							<div class=" relative">
+					<a href={`/experiencias/${experiencia.slug}`} class="block h-full">
+						<div class="bg-white rounded-lg p-3 image-wrapper relative overflow-hidden h-full flex flex-col">
+							<div class="relative">
 								<img
 									src={`${experiencia.optimizedImg.src}`}
 									alt={`${experiencia.data.title}`}
 									transition:name={`${experiencia.data.title}-image`}
-									class="w-full h-60 object-cover"
+									class="w-full h-60 object-cover rounded-lg"
 								/>
 							</div>
-							<div class="py-6 ">
-								<h2 class="text-primary text-xl font-bold mb-2 ">{experiencia.data.title}</h2>
-								<p class="text-primary line-clamp-2">{experiencia.data.description}</p>
-								<p class="text-primary mt-1">
-									{new Date(experiencia.data.date).toLocaleDateString("es-ES", {
-										weekday: "long",
-										year: "numeric",
-										month: "long",
-										day: "numeric",
-									})}
-								</p>
+							<div class="py-6 flex flex-col flex-grow">
+								<h2 class="text-primary text-xl font-bold mb-2">{experiencia.data.title}</h2>
+								<p class="text-primary line-clamp-3 flex-grow">{experiencia.data.description}</p>
 							</div>
 						</div>
 					</a>

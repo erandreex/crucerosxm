@@ -9,6 +9,15 @@ const experienciasCollection = defineCollection({
 		description: z.string().optional(),
 		date: z.date(),
 		tags: z.array(z.string()),
+		images: z
+			.array(
+				z.object({
+					src: z.string(),
+					alt: z.string(),
+					caption: z.string().optional(),
+				})
+			)
+			.optional(),
 	}),
 });
 
